@@ -20,7 +20,7 @@
 
     <div id="header">
         <h1 class="headers">Software Engineer | Chemist | Sports Fanatic | Gamer </h1>
-        <h2 class="headers">Welcome My Home Page</h2>
+        <h2 class="headers">Michael Goytia's Home Page</h2>
     </div>
 
     <div id="photo-app">
