@@ -12,7 +12,6 @@
 <a href="memezon/browse.php">Week 3 (Memezon)</a>
 
 <?php
-    echo "COMING SOON!"
 ?>
 
 </body>
