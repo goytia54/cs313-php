@@ -21,7 +21,7 @@ on parking_spots.build_id = buildings.building_id') as $row)
             $building = $row['building_name'];
             $spot_number = $row['spot_number'];
             $level = $row['level'];
-            echo '<li class="list-group-item">'.$building.'-'.$level.'-'.$spot_number.'</li>';
+            echo '<li class="list-group-item">'.$building.'-L'.$level.'-S'.$spot_number.'</li>';
         }
     }
     echo '</ul>';
