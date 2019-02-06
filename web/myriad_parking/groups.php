@@ -10,7 +10,7 @@
 
     <head></head>
     <body>
-        <div>
+        <div id="group-div">
             <?php echo '<ul class="list-group">';
                 foreach ($db->query('SELECT * FROM myriad_parking.GROUPS') as $row)
                 {
@@ -22,4 +22,10 @@
         </div>
 
     </body>
+    <style>
+        #group-div{
+            width: 200px;
+            height: 300px;
+        }
+    </style>
 </html>
