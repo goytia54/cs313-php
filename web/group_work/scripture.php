@@ -20,8 +20,8 @@
         $chapter = $row['chapter'];
         $verse = $row['verse'];
         $content = $row['content'];
-
-        echo '<b>'. $book. ' '.$chapter.':'. $verse. '</b>-' . $content.'<br>';
+        $id = $row[$id];
+        echo '<a href="scrip_details.php?id=' .$id. '">' . $book. ' '.$chapter.':'. $verse. '</a><br>';
     };
     ?>
 
