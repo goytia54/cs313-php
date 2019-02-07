@@ -14,6 +14,6 @@
         $verse = $row['verse'];
         $content = $row['content'];
 
-        echo '<b>'. $book. $chapter.':'. $verse. '</b>-' . $content;
+        echo '<b>'. $book. $chapter.':'. $verse. '</b>-' . $content.'<br>';
     };
 ?>
