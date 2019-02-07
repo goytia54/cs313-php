@@ -11,7 +11,5 @@
         $verse = $row['verse'];
         echo "<p>$content</p>";
         echo "<p>$book $chapter:$verse</p>";
-
-
     };
 ?>
