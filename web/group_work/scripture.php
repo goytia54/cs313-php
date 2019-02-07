@@ -1,8 +1,8 @@
 <?php
     include '..\myriad_parking\dbconect.php';
-    echo 'past include';
     $db = getDBConnection();
 
+    echo "connections";
     foreach ($db->query('select * from scriptures') as $row){
         $book = $row['book'];
         $chapter = $row['chapter'];
@@ -11,3 +11,4 @@
 
         echo '<b>'. $book. $chapter.':'. $verse. '</b>-' . $content;
     };
+?>
