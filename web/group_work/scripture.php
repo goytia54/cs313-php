@@ -1,5 +1,5 @@
 <?php
-    include '..\myriad_parking\dbconect.php';
+    include '../dbconect.php';
 
     try {
         $db = getDBConnection();
