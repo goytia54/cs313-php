@@ -20,7 +20,7 @@
         $chapter = $row['chapter'];
         $verse = $row['verse'];
         $content = $row['content'];
-        $id = $row[$id];
+        $id = $row['id'];
         echo '<a href="scrip_details.php?id=' .$id. '">' . $book. ' '.$chapter.':'. $verse. '</a><br>';
     };
     ?>
