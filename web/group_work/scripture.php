@@ -1,9 +1,14 @@
 <?php
     include '..\myriad_parking\dbconect.php';
-    $db = getDBConnection();
 
-    echo "connections";
-    foreach ($db->query('select * from scriptures') as $row){
+    try {
+        $db = getDBConnection();
+    }
+    catch(Exception $exception){
+        echo $exception->getMessage();
+    }
+
+    foreach ($db->query('select * from public.SCRIPTURES') as $row){
         $book = $row['book'];
         $chapter = $row['chapter'];
         $verse = $row['verse'];
