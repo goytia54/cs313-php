@@ -18,9 +18,6 @@
                 <a class="nav-link" href="spots.php">Find A Spot</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="groups.php">Search Groups</a>
-            </li>
-            <li class="nav-item">
             <?php
                 if (!isset($authorized) || !$authorized) {
                     echo '<a class="nav-link"  href="login.php">Login</a>';

@@ -4,9 +4,9 @@
     include '../dbconect.php';
     $db = getDBConnection();
     $authorized = $_SESSION['authorized'];
-    if (isset($authorized) && $authorized){
-        header('Location: account.php');
-    }
+if (isset($authorized) && $authorized){
+    header('Location: account.php');
+}
 ?>
 
 <html>
@@ -52,6 +52,11 @@
         if ($user_data->rowCount() == 1){
             header('Location: spots.php');
             $_SESSION['authorized'] = true;
+            $row = $user_data->fetch();
+            $_SESSION['user_name'] = $row['user_name'];
+            $_SESSION['name'] = $row['first_name'] . ' ' . $row['last_name'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['spot_id'] = $row['spot_id'];
         }
     ?>
 </body>
