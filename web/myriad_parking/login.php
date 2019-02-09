@@ -48,6 +48,7 @@
         $pwd = $_POST['pwd'];
         $user_data = $db->query("SELECT * FROM myriad_parking.parking_users WHERE email = '$email' and password = '$pwd'");
         $row_count = $user_data->rowCount();
+        echo "row count: $row_count"
 //        if ($user_data->rowCount() == 1){
 //            header('Location: spots.php');
 //        }
