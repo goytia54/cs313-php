@@ -28,21 +28,19 @@
                     <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">Submit</button>
                 </div>
             </div>
-
-            <div class="toast">
-                <div class="toast-header">
-                    Invalid Login
-                </div>
-                <div class="toast-body">
-                    Wrong Email or Username
-                </div>
-            </div>
-
+            <?php
+                $email = $_POST['email'];
+                $pwd = $_POST['pwd'];
+                if(isset($email) && isset($pwd)) {
+                    echo '<div class="alert alert-danger"><strong>Incorrect Email or Password! Try again.</strong></div>';
+                }
+            ?>
 
         </form>
     </div>
@@ -54,9 +52,6 @@
         if ($user_data->rowCount() == 1){
             header('Location: spots.php');
             $_SESSION['authorized'] = true;
-        }
-        else{
-            echo '<div class="alert alert-danger"><strong>Incorrect Email or Password! Try again.</strong></div>';
         }
     ?>
 </body>
