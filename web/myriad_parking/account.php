@@ -1,6 +1,8 @@
 <?php
     session_start();
     include_once ('navbar.php');
+    include '../dbconect.php';
+
     $authorized = $_SESSION['authorized'];
     if (!isset($authorized) && !$authorized){
         header('Location: login.php');
