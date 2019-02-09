@@ -4,7 +4,7 @@
     include '../dbconect.php';
     $db = getDBConnection();
     $authorized = $_SESSION['authorized'];
-    if (isset($authorized) || $authorized){
+    if (isset($authorized) && $authorized){
         header('Location: account.php');
     }
 ?>
