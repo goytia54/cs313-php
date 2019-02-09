@@ -1,6 +1,6 @@
 <?php
     include_once ('navbar.php');
-    include 'dbconect.php';
+    include '../dbconect.php';
     $db = getDBConnection();
 
 ?>
@@ -10,6 +10,7 @@
 
     <head></head>
     <body>
+        <h2>Groups</h2>
         <div id="group-div">
             <?php echo '<ul class="list-group">';
                 foreach ($db->query('SELECT * FROM myriad_parking.GROUPS') as $row)

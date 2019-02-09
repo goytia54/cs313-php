@@ -10,6 +10,7 @@ $db = getDBConnection();
 
 <head></head>
 <body>
+<h2>Available Spots</h2>
 <div id="group-div">
     <?php echo '<ul class="list-group">';
     foreach ($db->query('select * from myriad_parking.parking_spots inner join myriad_parking.buildings
