@@ -3,6 +3,10 @@
     include_once ('navbar.php');
     include '../dbconect.php';
     $db = getDBConnection();
+    $authorized = $_SESSION['authorized'];
+    if (isset($authorized) || $authorized){
+        header('Location: account.php');
+    }
 ?>
 
 <html>
@@ -52,11 +56,7 @@
             $_SESSION['authorized'] = true;
         }
         else{
-            echo "<script>
-            $(document).ready(function(){
-                $('.toast').toast('show');
-            });
-            </script>";
+            echo '<div class="alert alert-danger"><strong>Incorrect Email or Password! Try again.</strong></div>';
         }
     ?>
 </body>
