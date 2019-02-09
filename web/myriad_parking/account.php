@@ -24,8 +24,8 @@
                 <?php
                 $username = $_SESSION['user_name'];
                 $name = $_SESSION['name'];
-                $_SESSION['email'];
-                $_SESSION['spot_id'];
+                $email = $_SESSION['email'];
+                $spot_id = $_SESSION['spot_id'];
 
                 echo"<h4 class='card-title'>$name</h4>";
                 echo"<p class='card-text'>";
