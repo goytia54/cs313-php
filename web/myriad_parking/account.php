@@ -4,7 +4,7 @@
     include '../dbconect.php';
 
     $authorized = $_SESSION['authorized'];
-    if (!isset($authorized) && !$authorized){
+    if (!isset($authorized) || !$authorized){
         header('Location: login.php');
     }
     $db = getDBConnection();
