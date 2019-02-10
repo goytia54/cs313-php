@@ -11,6 +11,7 @@ $db = getDBConnection();
 <head></head>
 <body>
     <div class="container">
+        <h1>Find A Spot<small>Pick a spot, any spot!</small></h1>
         <div id="group-div">
         <?php
         foreach ($db->query('select * from myriad_parking.parking_spots inner join myriad_parking.buildings
