@@ -24,6 +24,7 @@
                     $_SESSION['authorized'] = false;
                 } else {
                     echo '<a class="nav-link" href="account.php">My Account</a>';
+                    echo '<a class="nav-link" href="logout.php">Sign Out</a>';
                 }
             ?>
             </li>
