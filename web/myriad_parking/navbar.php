@@ -12,22 +12,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Myriad Parking</h1>
+        <h1 class="display-1">Myriad Parking</h1>
         <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link" href="spots.php">Find A Spot</a>
             </li>
-            <li class="nav-item">
+
             <?php
                 if (!isset($authorized) || !$authorized) {
                     echo '<a class="nav-link"  href="login.php">Login</a>';
                     $_SESSION['authorized'] = false;
                 } else {
-                    echo '<a class="nav-link" href="account.php">My Account</a>';
-                    echo '<a class="nav-link" href="logout.php">Sign Out</a>';
+                    echo '<li class="nav-item"><a class="nav-link" href="account.php">My Account</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="logout.php">Sign Out</a></li>';
                 }
             ?>
-            </li>
+
 
         </ul>
     </div>
