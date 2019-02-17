@@ -28,7 +28,6 @@
                 $name = $_SESSION['name'];
                 $email = $_SESSION['email'];
                 $spot_id = $_SESSION['spot_id'];
-
                 echo"<h4 class='card-title'>$name</h4>";
                 echo"<p class='card-text'>";
                 echo"Username: $username<br>";

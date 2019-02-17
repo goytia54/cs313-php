@@ -50,13 +50,13 @@
         $pwd = $_POST['pwd'];
         $user_data = $db->query("SELECT * FROM myriad_parking.parking_users WHERE email = '$email' and password = '$pwd'");
         if ($user_data->rowCount() == 1){
-            header('Location: spots.php');
             $_SESSION['authorized'] = true;
             $row = $user_data->fetch();
             $_SESSION['user_name'] = $row['user_name'];
             $_SESSION['name'] = $row['first_name'] . ' ' . $row['last_name'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['spot_id'] = $row['spot_id'];
+            header('Location: spots.php');
         }
     ?>
 </body>

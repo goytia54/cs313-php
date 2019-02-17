@@ -7,23 +7,28 @@
             $dbOpts = parse_url($dbUrl);
 
             $dbHost = $dbOpts["host"];
-            $dbPort = $dbOpts["port"];
-            $dbUser = $dbOpts["user"];
-            $dbPassword = $dbOpts["pass"];
-            $dbName = ltrim($dbOpts["path"],'/');
+            if($dbHost != '') {
+                $dbHost = $dbOpts["host"];
+                $dbPort = $dbOpts["port"];
+                $dbUser = $dbOpts["user"];
+                $dbPassword = $dbOpts["pass"];
+                $dbName = ltrim($dbOpts["path"], '/');
 
-            $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+                $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } else {
 
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $db = new PDO('pgsql:host=localhost;dbname=mydb', 'postgres', 'yud72heo');
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            }
+
             return $db;
         }
         catch (PDOException $ex)
         {
             echo 'Error!: ' . $ex->getMessage();
-            $user = 'postgres';
-            $password = 'yud72heo';
-            $db = new PDO('pgsql:host=localhost;dbname=mydb', $user, $password);
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
         }
     }
 
