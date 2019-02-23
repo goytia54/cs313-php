@@ -67,7 +67,6 @@ if (isset($authorized) && $authorized){
                     $confirmpwd = $_POST['confirmpwd'];
                     $error = null;
 
-
                     //see if username or email exists
                     $user_data = $db->query("SELECT * FROM myriad_parking.parking_users WHERE email = '$email' or user_name = '$username' order by user_id");
                     if($user_data->rowCount() > 0){
@@ -109,7 +108,8 @@ if (isset($authorized) && $authorized){
                     }
                     else{
                         $sql = "INSERT INTO myriad_parking.parking_users (user_name, first_name, last_name, email, password) values(?,?,?,?,?)";
-                        $db->prepare($sql)->execute([$username,$firstName,$lastName,$email,$pwd]);
+                        $hashedPwd = password_hash($pwd,PASSWORD_DEFAULT);
+                        $db->prepare($sql)->execute([$username,$firstName,$lastName,$email,$hashedPwd]);
                         $_SESSION['authorized'] = true;
                         $row = $user_data->fetch();
                         $_SESSION['user_name'] = $username;

@@ -6,7 +6,7 @@
     $authorized = $_SESSION['authorized'];
     if (isset($authorized) && $authorized){
         header('Location: account.php');
-}
+    }
 ?>
 
 <html>
@@ -35,29 +35,44 @@
                 </div>
             </div>
             <?php
-                $email = $_POST['email'];
-                $pwd = $_POST['pwd'];
-                if(isset($email) && isset($pwd)) {
-                    echo '<div class="alert alert-danger"><strong>Incorrect Email or Password! Try again.</strong></div>';
+                if($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $email = $_POST['email'];
+                    $pwd = $_POST['pwd'];
+                    $user_data = $db->query("SELECT * FROM myriad_parking.parking_users WHERE email = '$email'");
+                    if ($user_data->rowCount() == 1) {
+                        $row = $user_data->fetch();
+                        if (password_verify($pwd,$row['password'])) {
+                            $_SESSION['authorized'] = true;
+                            $_SESSION['user_name'] = $row['user_name'];
+                            $user_id = $row['user_id'];
+                            $_SESSION['user_id'] = $user_id;
+                            $_SESSION['name'] = $row['first_name'] . ' ' . $row['last_name'];
+                            $_SESSION['email'] = $row['email'];
+                            $park_data = $db->query("select * from myriad_parking.parking_mapping where user_id = '$user_id'");
+                            $mapping = $park_data->fetch();
+                            if(isset($row['spot_id'])){
+                                $_SESSION['spot_id'] = $row['spot_id'];
+                            } else if(isset($mapping['spot_id'])){
+                                $_SESSION['spot_id'] = $mapping['spot_id'];
+                            } else {
+                                $_SESSION['spot_id'] = null;
+                            }
+
+
+                            header('Location: spots.php');
+                        } else {
+                            echo '<div class="alert alert-danger"><strong>Incorrect Email or Password! Try again.</strong></div>';
+                        }
+                    }
+                    else {
+                        echo '<div class="alert alert-danger"><strong>Incorrect Email or Password! Try again.</strong></div>';
+                    }
                 }
             ?>
 
         </form>
     </div>
 
-    <?php
-        $email = $_POST['email'];
-        $pwd = $_POST['pwd'];
-        $user_data = $db->query("SELECT * FROM myriad_parking.parking_users WHERE email = '$email' and password = '$pwd'");
-        if ($user_data->rowCount() == 1){
-            $_SESSION['authorized'] = true;
-            $row = $user_data->fetch();
-            $_SESSION['user_name'] = $row['user_name'];
-            $_SESSION['name'] = $row['first_name'] . ' ' . $row['last_name'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['spot_id'] = $row['spot_id'];
-            header('Location: spots.php');
-        }
-    ?>
+
 </body>
 </html>
