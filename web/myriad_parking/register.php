@@ -110,12 +110,16 @@ if (isset($authorized) && $authorized){
                         $sql = "INSERT INTO myriad_parking.parking_users (user_name, first_name, last_name, email, password) values(?,?,?,?,?)";
                         $hashedPwd = password_hash($pwd,PASSWORD_DEFAULT);
                         $db->prepare($sql)->execute([$username,$firstName,$lastName,$email,$hashedPwd]);
+                        $user_id = $db->lastInsertId();
                         $_SESSION['authorized'] = true;
                         $row = $user_data->fetch();
                         $_SESSION['user_name'] = $username;
                         $_SESSION['name'] = $firstName . ' ' . $lastName;
                         $_SESSION['email'] = $email;
-                        $_SESSION['spot_id'] = '';
+                        $_SESSION['spot_id'] = null;
+
+                        $sql = "INSERT INTO myriad_parking.PARKING_MAPPING (user_id, spot_id) values (?,?)";
+                        $db->prepare($sql)->execute([$user_id,null]);
                         header('Location: account.php');
                     }
                 }
